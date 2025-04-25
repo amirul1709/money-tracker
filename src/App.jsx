@@ -6,7 +6,20 @@ function App() {
   const [dateTime, setDateTime] = useState("");
   const [description, setDescription] = useState("");
 
-  function handleSubmit() {}
+  function handleSubmit(ev) {
+    ev.preventDefault();
+    const url = import.meta.env.VITE_APP_API_URL + "/transaction";
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ name, description, dateTime }),
+    }).then((res) => {
+      res.json().then((json) => {
+        console.log("result", json);
+      });
+    });
+  }
 
   return (
     <main>
