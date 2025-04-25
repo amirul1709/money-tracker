@@ -23,7 +23,27 @@ function App() {
             <div className="description">Upgrade time</div>
           </div>
           <div className="right">
-            <div className="price">$1000</div>
+            <div className="price red">-$1000</div>
+            <div className="datetime">2025-09-17 15:00</div>
+          </div>
+        </div>
+        <div className="transaction">
+          <div className="left">
+            <div className="name">New job</div>
+            <div className="description">Type shit</div>
+          </div>
+          <div className="right">
+            <div className="price">+$2500</div>
+            <div className="datetime">2025-09-17 15:00</div>
+          </div>
+        </div>
+        <div className="transaction">
+          <div className="left">
+            <div className="name">New whip</div>
+            <div className="description">Lets roll</div>
+          </div>
+          <div className="right">
+            <div className="price red">-$10000</div>
             <div className="datetime">2025-09-17 15:00</div>
           </div>
         </div>

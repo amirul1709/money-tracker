@@ -55,8 +55,8 @@ form button {
 
 .transaction {
   display: flex;
-  padding: 5px 0;
-  justify-content: space-around;
+  padding: 5px 5px;
+  justify-content: space-between;
 }
 
 .transaction .name {
@@ -70,4 +70,12 @@ form button {
 
 .right {
   text-align: right;
+}
+
+.price {
+  color: #1c1;
+}
+
+.price.red {
+  color: #c11;
 }
