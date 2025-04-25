@@ -65,7 +65,12 @@ form button {
 
 .transaction .description {
   font-size: 0.7rem;
-  color: #888;
+  color: #686868;
+}
+
+.transaction .datetime {
+  font-size: 0.7rem;
+  color: #686868;
 }
 
 .right {
@@ -73,9 +78,9 @@ form button {
 }
 
 .price {
-  color: #1c1;
+  color: rgb(39, 102, 5);
 }
 
 .price.red {
-  color: #c11;
+  color: rgb(170, 12, 12);
 }
