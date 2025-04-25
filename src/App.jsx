@@ -7,11 +7,11 @@ function App() {
         $400<span>.00</span>
       </h1>
       <form>
-        <div>
+        <div className="basics">
           <input type="text" placeholder="+$1000 iPhone 15" />
           <input type="datetime-local" />
         </div>
-        <div>
+        <div className="description">
           <input type="text" placeholder="description" />
         </div>
         <button type="submit">Add</button>
