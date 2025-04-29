@@ -22,6 +22,10 @@ function App() {
       }),
     }).then((res) => {
       res.json().then((json) => {
+        setName("");
+        setPrice("");
+        setDatetime("");
+        setDescription("");
         console.log("result", json);
       });
     });
