@@ -3,7 +3,8 @@ import "./App.css";
 
 function App() {
   const [name, setName] = useState("");
-  const [dateTime, setDateTime] = useState("");
+  const [price, setPrice] = useState("");
+  const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
 
   function handleSubmit(ev) {
@@ -13,7 +14,12 @@ function App() {
     fetch(url, {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ name, description, dateTime }),
+      body: JSON.stringify({
+        name,
+        price,
+        datetime,
+        description,
+      }),
     }).then((res) => {
       res.json().then((json) => {
         console.log("result", json);
@@ -30,14 +36,20 @@ function App() {
         <div className="basics">
           <input
             type="text"
-            placeholder="+$1000 iPhone 15"
+            placeholder="iPhone 15"
             value={name}
             onChange={(ev) => setName(ev.target.value)}
           />
           <input
+            type="text"
+            placeholder="+1000"
+            value={price}
+            onChange={(ev) => setPrice(ev.target.value)}
+          />
+          <input
             type="datetime-local"
-            value={dateTime}
-            onChange={(ev) => setDateTime(ev.target.value)}
+            value={datetime}
+            onChange={(ev) => setDatetime(ev.target.value)}
           />
         </div>
         <div className="description">
