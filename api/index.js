@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import transactionModel from "./models/transactions";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.get("/api/test", (req, res) => {
 });
 
 app.post("api/transaction", (req, res) => {
+    mongoose.connect("");
+    const { name, description, datetime } = req.body;
     res.json(req.body);
 });
 
