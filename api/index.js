@@ -28,4 +28,10 @@ app.post("/api/transaction", async (req, res) => {
     res.json(transaction);
 });
 
+app.get("/api/transactions", async (req, res) => {
+    await mongoose.connect(process.env.MONGO_URL);
+    const transactions = await TransactionModel.find();
+    res.json(transactions);
+})
+
 app.listen(3000);
