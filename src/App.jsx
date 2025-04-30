@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -6,6 +6,19 @@ function App() {
   const [price, setPrice] = useState("");
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
+  const [transactions, setTransactions] = useState("");
+
+  async function getTransactions() {
+    const url = import.meta.env.VITE_APP_API_URL + "/transactions";
+    const res = await fetch(url);
+    const json = await res.json();
+
+    return json;
+  }
+
+  useEffect(() => {
+    getTransactions().then(setTransactions);
+  }, []);
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -66,6 +79,7 @@ function App() {
         </div>
         <button type="submit">Add</button>
       </form>
+      <div>{transactions.length}</div>
       <div className="transactions">
         <div className="transaction">
           <div className="left">
