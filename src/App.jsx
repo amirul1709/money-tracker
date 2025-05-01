@@ -6,7 +6,7 @@ function App() {
   const [price, setPrice] = useState("");
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
-  const [transactions, setTransactions] = useState("");
+  const [transactions, setTransactions] = useState([]);
 
   async function getTransactions() {
     const url = import.meta.env.VITE_APP_API_URL + "/transactions";
@@ -44,10 +44,39 @@ function App() {
     });
   }
 
+  console.log(transactions);
+
+  const displayTransactions = transactions.map((transaction) => (
+    <div className="transaction">
+      <div className="left">
+        <div className="name">{transaction.name}</div>
+        <div className="description">{transaction.description}</div>
+      </div>
+      <div className="right">
+        <div className={`price ${transaction.price < 0 ? "red" : "green"}`}>
+          {transaction.price < 0 ? transaction.price : `+${transaction.price}`}
+        </div>
+        <div className="datetime">{transaction.datetime}</div>
+      </div>
+    </div>
+  ));
+
+  let balance = 0.0;
+
+  for (const transaction of transactions) {
+    balance = balance + transaction.price;
+  }
+
+  balance = balance.toFixed(2);
+
+  const cents = balance.split(".")[1];
+  const dollars = balance.split(".")[0];
+
   return (
     <main>
       <h1>
-        $400<span>.00</span>
+        ${dollars}
+        <span>.{cents}</span>
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="basics">
@@ -79,38 +108,12 @@ function App() {
         </div>
         <button type="submit">Add</button>
       </form>
-      <div>{transactions.length}</div>
       <div className="transactions">
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New Phone</div>
-            <div className="description">Upgrade time</div>
-          </div>
-          <div className="right">
-            <div className="price red">-$1000</div>
-            <div className="datetime">2025-09-17 15:00</div>
-          </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New job</div>
-            <div className="description">Type shit</div>
-          </div>
-          <div className="right">
-            <div className="price">+$2500</div>
-            <div className="datetime">2025-09-17 15:00</div>
-          </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New whip</div>
-            <div className="description">Lets roll</div>
-          </div>
-          <div className="right">
-            <div className="price red">-$10000</div>
-            <div className="datetime">2025-09-17 15:00</div>
-          </div>
-        </div>
+        {transactions.length > 0 ? (
+          displayTransactions
+        ) : (
+          <p>No transactions available</p>
+        )}
       </div>
     </main>
   );
