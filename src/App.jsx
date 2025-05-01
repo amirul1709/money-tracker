@@ -54,7 +54,9 @@ function App() {
       </div>
       <div className="right">
         <div className={`price ${transaction.price < 0 ? "red" : "green"}`}>
-          {transaction.price < 0 ? transaction.price : `+${transaction.price}`}
+          {transaction.price < 0
+            ? `-$${Math.abs(transaction.price)}`
+            : `+$${transaction.price}`}
         </div>
         <div className="datetime">{transaction.datetime}</div>
       </div>
