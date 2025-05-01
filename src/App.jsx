@@ -47,7 +47,7 @@ function App() {
   console.log(transactions);
 
   const displayTransactions = transactions.map((transaction) => (
-    <div className="transaction">
+    <div className="transaction" key={transaction._id}>
       <div className="left">
         <div className="name">{transaction.name}</div>
         <div className="description">{transaction.description}</div>
